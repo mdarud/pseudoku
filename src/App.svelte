@@ -645,7 +645,7 @@
             <option style="color: black;" value="easy">Easy</option>
             <option style="color: black;" value="medium">Medium</option>
             <option style="color: black;" value="hard">Hard</option>
-            <option style="color: black;" value="extreme">Extreme (4-10 cells)</option>
+            <option style="color: black;" value="extreme">Extreme</option>
         </select>
         
         <button
