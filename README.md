@@ -1,47 +1,92 @@
-# Svelte + TS + Vite
+# Pseudoku
 
-This template should help get you started developing with Svelte and TypeScript in Vite.
+A modern Sudoku puzzle solver and visualizer built with Svelte and TypeScript. This application demonstrates different algorithms for solving Sudoku puzzles, with step-by-step visualization and detailed explanations.
 
-## Recommended IDE Setup
+![Pseudoku Screenshot](screenshot.png)
 
-[VS Code](https://code.visualstudio.com/) + [Svelte](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode).
+## Features
 
-## Need an official Svelte framework?
+- **Multiple Solving Algorithms**:
+  - Dancing Links (DLX) - an efficient implementation of Algorithm X for exact cover problems
+  - Bit Backtracking - optimized backtracking using bitwise operations
+  - Simple Backtracking - traditional brute-force approach
+  
+- **Detailed Visualizations**:
+  - Step-by-step solving mode
+  - Cell-by-cell explanation of algorithm decisions
+  - Visual representation of backtracking and constraint checking
 
-Check out [SvelteKit](https://github.com/sveltejs/kit#readme), which is also powered by Vite. Deploy anywhere with its serverless-first approach and adapt to various platforms, with out of the box support for TypeScript, SCSS, and Less, and easily-added support for mdsvex, GraphQL, PostCSS, Tailwind CSS, and more.
+- **Interactive Features**:
+  - Manual puzzle solving
+  - Automatic puzzle generation with different difficulty levels
+  - Reset functionality to restart from the initial puzzle
+  - Timer and statistics tracking
 
-## Technical considerations
+- **Educational Value**:
+  - Detailed explanations of how each algorithm works
+  - Visualization of constraint checks and backtracking
+  - Comparison of different approaches to solving Sudoku
 
-**Why use this over SvelteKit?**
+## Getting Started
 
-- It brings its own routing solution which might not be preferable for some users.
-- It is first and foremost a framework that just happens to use Vite under the hood, not a Vite app.
+### Prerequisites
 
-This template contains as little as possible to get started with Vite + TypeScript + Svelte, while taking into account the developer experience with regards to HMR and intellisense. It demonstrates capabilities on par with the other `create-vite` templates and is a good starting point for beginners dipping their toes into a Vite + Svelte project.
+- Node.js (v14+)
+- npm or yarn
 
-Should you later need the extended capabilities and extensibility provided by SvelteKit, the template has been structured similarly to SvelteKit so that it is easy to migrate.
+### Installation
 
-**Why `global.d.ts` instead of `compilerOptions.types` inside `jsconfig.json` or `tsconfig.json`?**
+1. Clone the repository:
+   ```
+   git clone https://github.com/yourusername/pseudoku.git
+   cd pseudoku
+   ```
 
-Setting `compilerOptions.types` shuts out all other types not explicitly listed in the configuration. Using triple-slash references keeps the default TypeScript setting of accepting type information from the entire workspace, while also adding `svelte` and `vite/client` type information.
+2. Install dependencies:
+   ```
+   npm install
+   ```
 
-**Why include `.vscode/extensions.json`?**
+3. Start the development server:
+   ```
+   npm run dev
+   ```
 
-Other templates indirectly recommend extensions via the README, but this file allows VS Code to prompt the user to install the recommended extension upon opening the project.
+4. Open your browser and navigate to `http://localhost:5173`
 
-**Why enable `allowJs` in the TS template?**
+## How to Use
 
-While `allowJs: false` would indeed prevent the use of `.js` files in the project, it does not prevent the use of JavaScript syntax in `.svelte` files. In addition, it would force `checkJs: false`, bringing the worst of both worlds: not being able to guarantee the entire codebase is TypeScript, and also having worse typechecking for the existing JavaScript. In addition, there are valid use cases in which a mixed codebase may be relevant.
+1. **Generate a Puzzle**: Select a difficulty level and click "New Game"
+2. **Solve It Yourself**: Click cells and use number buttons to fill in values
+3. **Use the Solver**: Choose an algorithm and click "Solve" for automatic solving
+4. **Step-by-Step**: Click "Step Mode" to see the algorithm work through the puzzle step by step
+5. **Reset Puzzle**: Click "Reset Puzzle" to return to the initial state
 
-**Why is HMR not preserving my local component state?**
+## How It Works
 
-HMR state preservation comes with a number of gotchas! It has been disabled by default in both `svelte-hmr` and `@sveltejs/vite-plugin-svelte` due to its often surprising behavior. You can read the details [here](https://github.com/rixo/svelte-hmr#svelte-hmr).
+### Dancing Links (DLX)
 
-If you have state that's important to retain within a component, consider creating an external store which would not be replaced by HMR.
+This algorithm, developed by Donald Knuth, represents Sudoku as an exact cover problem. It uses a sparse matrix representation with a doubly-linked list to efficiently remove and restore constraints during backtracking.
 
-```ts
-// store.ts
-// An extremely simple external store
-import { writable } from 'svelte/store'
-export default writable(0)
-```
+### Bit Backtracking
+
+An optimized version of backtracking that uses bitwise operations to track used digits in rows, columns, and boxes. This significantly improves performance by reducing constraint checking to O(1) operations.
+
+### Simple Backtracking
+
+A traditional recursive backtracking approach that tries each possible value (1-9) for empty cells and backtracks when constraints are violated.
+
+## Built With
+
+- [Svelte](https://svelte.dev/) - Frontend framework
+- [TypeScript](https://www.typescriptlang.org/) - Type safety
+- [Vite](https://vitejs.dev/) - Development environment
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Acknowledgments
+
+- Donald Knuth for the Dancing Links algorithm
+- The Sudoku community for inspiration and puzzle generation techniques
