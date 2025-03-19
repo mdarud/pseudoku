@@ -627,15 +627,15 @@
 
 <svelte:window on:keydown={handleKeydown}/>
 
-<main style="min-height: 100vh; background-color: #111827; color: white; padding: 2rem 0;">
+<main style="min-height: 100vh; background-color: #111827; color: white; padding: 1rem 0;">
   <div style="max-width: 1200px; margin: 0 auto; padding: 0 1rem;">
-    <header style="margin-bottom: 2rem; text-align: center;">
-      <h1 style="font-size: 2.5rem; font-weight: bold; color: white; margin-bottom: 0.5rem;">Pseudoku</h1>
-      <p style="color: #9ca3af;">Sudoku Solver with Multiple Algorithms</p>
+    <header style="margin-bottom: 1rem; text-align: center;">
+      <h1 style="font-size: 2rem; font-weight: bold; color: white; margin-bottom: 0.25rem;">Pseudoku</h1>
+      <p style="color: #9ca3af; font-size: 0.875rem;">Sudoku Solver with Multiple Algorithms</p>
     </header>
     
-    <div style="display: flex; flex-direction: column; align-items: center; gap: 2rem;">
-      <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; width: 100%;">
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 1rem;">
+      <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; width: 100%;">
         <div style="display: flex; align-items: center; background-color: #1f2937; border-radius: 0.5rem; padding: 0.25rem; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
         <select
           bind:value={difficulty}
@@ -673,26 +673,26 @@
         </div>
       </div>
 
-      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; width: 100%;">
-        <div style="background-color: #1f2937; border-radius: 0.75rem; padding: 1rem; text-align: center; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
-          <div style="text-transform: uppercase; color: #9ca3af; font-size: 0.875rem; font-weight: 500;">Time</div>
-          <div style="font-size: 1.5rem; font-weight: 600; color: white;">{formatTime(elapsedTime)}</div>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.25rem; width: 100%;">
+        <div style="background-color: #1f2937; border-radius: 0.5rem; padding: 0.5rem; text-align: center; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+          <div style="text-transform: uppercase; color: #9ca3af; font-size: 0.75rem; font-weight: 500;">Time</div>
+          <div style="font-size: 1.25rem; font-weight: 600; color: white;">{formatTime(elapsedTime)}</div>
         </div>
-        <div style="background-color: #1f2937; border-radius: 0.75rem; padding: 1rem; text-align: center; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
-          <div style="text-transform: uppercase; color: #9ca3af; font-size: 0.875rem; font-weight: 500;">Games Played</div>
-          <div style="font-size: 1.5rem; font-weight: 600; color: white;">{gamesPlayed}</div>
+        <div style="background-color: #1f2937; border-radius: 0.5rem; padding: 0.5rem; text-align: center; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+          <div style="text-transform: uppercase; color: #9ca3af; font-size: 0.75rem; font-weight: 500;">Games Played</div>
+          <div style="font-size: 1.25rem; font-weight: 600; color: white;">{gamesPlayed}</div>
         </div>
-        <div style="background-color: #1f2937; border-radius: 0.75rem; padding: 1rem; text-align: center; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
-          <div style="text-transform: uppercase; color: #9ca3af; font-size: 0.875rem; font-weight: 500;">
+        <div style="background-color: #1f2937; border-radius: 0.5rem; padding: 0.5rem; text-align: center; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+          <div style="text-transform: uppercase; color: #9ca3af; font-size: 0.75rem; font-weight: 500;">
             {isPuzzleCreationMode ? 'Creation Mode' : 'Best Time'}
           </div>
-          <div style="font-size: 1.5rem; font-weight: 600; color: {isPuzzleCreationMode ? '#10b981' : 'white'};">
+          <div style="font-size: 1.25rem; font-weight: 600; color: {isPuzzleCreationMode ? '#10b981' : 'white'};">
             {isPuzzleCreationMode ? 'Active' : bestTimes[difficulty] === Infinity ? 'N/A' : formatTime(bestTimes[difficulty])}
           </div>
         </div>
       </div>
 
-      <div style="display: flex; align-items: center; justify-content: center; gap: 2.5rem;">
+      <div style="display: flex; align-items: center; justify-content: center; gap: 1.5rem;">
         {#if isStepMode}
           <button
             on:click={prevStep}
@@ -703,7 +703,7 @@
           </button>
         {/if}
 
-        <div style="display: flex; flex-direction: column; align-items: center; gap: 1rem;">
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 1rem; margin: 1rem 0;">
           <div style="background-color: #1f2937; padding: 1rem; border-radius: 0.75rem; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); position: relative; transform: scale(1.15); margin: 1.2rem 0;">
       <SudokuBoard
         {board}
@@ -1239,7 +1239,7 @@
         {/if}
       </div>
 
-      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; margin-top: 0.5rem;">
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; margin-top: 0.25rem;">
         {#each Array(9) as _, i}
           <button
             on:click={() => handleNumberInput(i + 1)}
@@ -1251,7 +1251,7 @@
         {/each}
       </div>
 
-      <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; margin-top: 0.5rem;">
+      <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin-top: 0.25rem;">
         <button
           on:click={clearCell}
           style="height: 2.5rem; padding: 0 1rem; background-color: #374151; color: white; border-radius: 0.5rem; display: flex; align-items: center; justify-content: center; border: 1px solid #4b5563; cursor: pointer; opacity: {isSolving ? '0.5' : '1'};"
@@ -1342,7 +1342,7 @@
     </div>
   </div>
 
-  <footer style="margin-top: 4rem; padding-bottom: 2rem; text-align: center; color: #9ca3af; font-size: 0.875rem;">
+  <footer style="margin-top: 1rem; padding-bottom: 1rem; text-align: center; color: #9ca3af; font-size: 0.875rem;">
     <p>Pseudoku - Made with ❤️ by <a href="https://github.com/mdarud" style="color: #9ca3af;">Daru</a></p>
   </footer>
 </main>

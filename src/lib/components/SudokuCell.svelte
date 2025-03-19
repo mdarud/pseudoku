@@ -137,17 +137,17 @@
 
     @media (min-width: 768px) {
         button {
-            min-width: 54px !important;
-            min-height: 54px !important;
-            font-size: 1.3rem;
+            min-width: 45px !important;
+            min-height: 45px !important;
+            font-size: 1.1rem;
         }
     }
 
     @media (min-width: 1024px) {
         button {
-            min-width: 60px !important;
-            min-height: 60px !important;
-            font-size: 1.5rem;
+            min-width: 50px !important;
+            min-height: 50px !important;
+            font-size: 1.25rem;
         }
     }
 </style> 

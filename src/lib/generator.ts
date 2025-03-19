@@ -16,7 +16,7 @@ export class SudokuGenerator {
             easy: { min: 30, max: 35 },
             medium: { min: 35, max: 40 },
             hard: { min: 40, max: 45 },
-            extreme: { min: 71, max: 77 }  // 81 - max/min filled cells (4-10 filled cells)
+            extreme: { min: 46, max: 64 }  // 81 - max/min filled cells (17-35 filled cells)
         };
     }
 
@@ -126,21 +126,73 @@ export class SudokuGenerator {
         this.shuffleArray(positions);
         
         let holesRemaining = holes;
+        let attempts = 0;
+        const maxAttempts = 1000; // Prevent infinite loops
+        
         for (const [row, col] of positions) {
-            if (holesRemaining <= 0) break;
+            if (holesRemaining <= 0 || attempts >= maxAttempts) break;
             
             const backup = grid[row][col];
             grid[row][col] = 0;
             
+            // Check if removing this number creates multiple solutions
             const boardCopy = grid.map(row => [...row]);
             this.solver.setBoard(boardCopy);
             
-            if (this.solver.solve()) {
+            // First check if the puzzle is still solvable
+            if (!this.solver.solve()) {
+                grid[row][col] = backup;
+                attempts++;
+                continue;
+            }
+            
+            // Use a backup of the board to check for multiple solutions
+            const boardForCheck = boardCopy.map(row => [...row]);
+            const hasMultipleSolutions = this.hasMultipleSolutions(boardForCheck);
+            
+            if (!hasMultipleSolutions) {
                 holesRemaining--;
             } else {
                 grid[row][col] = backup;
             }
+            attempts++;
         }
+        
+        // If we couldn't remove enough cells while maintaining uniqueness,
+        // try to remove more cells from the current state
+        if (holesRemaining > 0 && attempts < maxAttempts) {
+            this.digHoles(grid, holesRemaining);
+        }
+    }
+
+    private hasMultipleSolutions(board: Board): boolean {
+        let solutionsFound = 0;
+
+        const findSolutions = (currentBoard: Board): boolean => {
+            for (let row = 0; row < 9; row++) {
+                for (let col = 0; col < 9; col++) {
+                    if (currentBoard[row][col] === 0) {
+                        for (let num = 1; num <= 9; num++) {
+                            if (this.isSafe(currentBoard, row, col, num)) {
+                                currentBoard[row][col] = num;
+                                if (findSolutions(currentBoard)) {
+                                    solutionsFound++;
+                                    if (solutionsFound > 1) {
+                                        return true; // Found more than one solution
+                                    }
+                                }
+                                currentBoard[row][col] = 0; // Backtrack
+                            }
+                        }
+                        return false; // No valid number found
+                    }
+                }
+            }
+            return true; // All cells filled
+        };
+
+        findSolutions(board);
+        return solutionsFound > 1; // Return true if more than one solution found
     }
 
     private shuffleArray<T>(array: T[]): void {

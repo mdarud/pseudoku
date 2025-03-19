@@ -87,7 +87,7 @@ export class SudokuSolver {
     private static readonly ALL_NUMS = 0b1111111110; // Bits 1-9 set
     private stats: SolverStats;
     private currentTestedValues: number[];
-    
+
     constructor() {
         this.board = Array(9).fill(0).map(() => Array(9).fill(0));
         this.solutionSteps = [];
@@ -295,14 +295,14 @@ export class SudokuSolver {
 
             // Recursively search
             if (this.searchDLX(k + 1)) {
-                return true;
-            }
+                    return true;
+                }
 
             // If we get here, this branch didn't work; backtrack
             if (this.board[row.row][row.col] === row.num) {
                 this.board[row.row][row.col] = 0;
                 if (this.solutionSteps.length > 0) {
-                    this.solutionSteps.pop();
+                this.solutionSteps.pop();
                 }
             }
 
