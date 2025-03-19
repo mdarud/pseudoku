@@ -1,0 +1,24 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="32" height="32" rx="4" fill="#4F46E5"/>
+  
+  <!-- Sudoku grid lines -->
+  <!-- Horizontal lines -->
+  <line x1="2" y1="10.5" x2="30" y2="10.5" stroke="white" stroke-width="1"/>
+  <line x1="2" y1="21.5" x2="30" y2="21.5" stroke="white" stroke-width="1"/>
+  
+  <!-- Vertical lines -->
+  <line x1="10.5" y1="2" x2="10.5" y2="30" stroke="white" stroke-width="1"/>
+  <line x1="21.5" y1="2" x2="21.5" y2="30" stroke="white" stroke-width="1"/>
+  
+  <!-- Bold outer border -->
+  <rect x="2" y="2" width="28" height="28" rx="2" stroke="white" stroke-width="2" fill="none"/>
+  
+  <!-- Example numbers -->
+  <text x="5.5" y="8" font-family="Arial" font-weight="bold" font-size="6" fill="white">9</text>
+  <text x="16.5" y="8" font-family="Arial" font-weight="bold" font-size="6" fill="white">3</text>
+  <text x="16.5" y="19" font-family="Arial" font-weight="bold" font-size="6" fill="white">7</text>
+  <text x="27.5" y="19" font-family="Arial" font-weight="bold" font-size="6" fill="white">5</text>
+  <text x="5.5" y="29" font-family="Arial" font-weight="bold" font-size="6" fill="white">2</text>
+  <text x="27.5" y="29" font-family="Arial" font-weight="bold" font-size="6" fill="white">8</text>
+</svg> 
