@@ -81,8 +81,8 @@
         transition: all 0.2s ease;
         padding: 0;
         margin: 0;
-        min-width: 48px;
-        min-height: 48px;
+        min-width: 35px;
+        min-height: 35px;
         border: none;
         cursor: {isOriginal ? 'not-allowed' : 'pointer'};
         color: {isOriginal ? 'white' : '#93c5fd'};

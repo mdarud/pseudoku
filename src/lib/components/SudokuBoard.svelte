@@ -35,7 +35,7 @@
             {#each board as row, i}
                 <div style="display: flex;">
                     {#each row as cell, j}
-                        <div style="width: 40px; height: 40px; border-right: 1px solid #4b5563; border-bottom: 1px solid #4b5563; padding: 0; margin: 0; position: relative; {i === 0 ? 'border-top: none;' : ''} {j === 0 ? 'border-left: none;' : ''} {(j + 1) % 3 === 0 ? 'border-right: 2px solid #6366f1;' : ''} {(i + 1) % 3 === 0 ? 'border-bottom: 2px solid #6366f1;' : ''} {j === 8 ? 'border-right: none;' : ''} {i === 8 ? 'border-bottom: none;' : ''}">
+                        <div style="width: 35px; height: 35px; border-right: 1px solid #4b5563; border-bottom: 1px solid #4b5563; padding: 0; margin: 0; position: relative; {i === 0 ? 'border-top: none;' : ''} {j === 0 ? 'border-left: none;' : ''} {(j + 1) % 3 === 0 ? 'border-right: 2px solid #6366f1;' : ''} {(i + 1) % 3 === 0 ? 'border-bottom: 2px solid #6366f1;' : ''} {j === 8 ? 'border-right: none;' : ''} {i === 8 ? 'border-bottom: none;' : ''}">
                             <SudokuCell
                                 value={cell}
                                 row={i}
@@ -61,14 +61,14 @@
 <style>
     /* Keep this minimal since we're using inline styles */
     @media (min-width: 768px) {
-        div[style*="width: 40px"] {
+        div[style*="width: 35px"] {
             width: 45px !important;
             height: 45px !important;
         }
     }
 
     @media (min-width: 1024px) {
-        div[style*="width: 40px"] {
+        div[style*="width: 35px"] {
             width: 50px !important;
             height: 50px !important;
         }
